@@ -13,25 +13,22 @@
  *		on Windows & Linux: Ctrl + Shift + I
  */ 
 
-//(1)
 // const keyword prevents reassignment of machineLearning variable below
 const machineLearning = '6.867';
 // Oh wait! I want to take undergrad version!
 // machineLearning = '6.036'; // breaks as it should!
-// (2)
+
 const schedule = [];
 // Could use array's slice method instead of ...: Reference MDN Docs https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push and show students MDN docs
 schedule.push(machineLearning);
 const copyOfSchedule = [...schedule];
 
-// (3)
 console.log('Here is my schedule for the semester: ');
 for (let i = 0; i < schedule.length; i++) {
 	console.log(schedule[i]);
 };
 alert(`Here is my schedule for the semester: ${schedule[0]}`);
 
-// (4)
 const Amir = { name: 'Amir Farhat',  email: 'amirf@mit.edu' };
 const Emily = { name: 'Emily Hu', email: 'emilyhu@mit.edu' };
 const EJ = { name: 'EJ Sefah', email: 'esefah@mit.edu' };
@@ -69,7 +66,7 @@ Dylan;
 Dylan.email = 'drlewis@alum.mit.edu';
 Dylan;
 
-// (5) Function to get the names of all courses of a certain rating
+// Function to get the names of all courses of a certain rating
 function getCourseNamesWithRatingGreaterThan(schedule, rating = 3.5) {
 	const coursesAtRating = [];
 	// NOTE: we are using for ... of and not for ... in
@@ -98,7 +95,7 @@ function getCourseNamesWithTA(schedule, TAName) {
 	// return schedule.filter((c) => c.TA && c.TA.name === TAName);
 }
 
-// (6) Use a function to get the names of all courses of with a TA
+// Use a function to get the names of all courses of with a TA
 console.log(getCourseNamesWithTA(newSchedule, Dylan.name));
 console.log(getCourseNamesWithTA(newSchedule, Emily.name));
 console.log(getCourseNamesWithTA(newSchedule, EJ.name));
