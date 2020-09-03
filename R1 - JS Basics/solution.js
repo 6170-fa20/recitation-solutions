@@ -1,4 +1,58 @@
-// Recitation 1 Problem set-up & suggested solution
+// Recitation 1 JS Basics, Problem set-up & suggested solution
+
+// JS Basics
+
+// Primitives and Scoping. const and let
+let a = true; let b = 2.45; let c = "bookcase"; let d = null; let e = undefined;
+const f = "bookcase";
+f = "shelf"; // error
+
+// Arrays
+let pets = ["cat"]
+pets.push("dog");
+pets
+pets.indexOf("cat")
+pets.length
+
+pets[0]
+pets[2] = "parrot"
+pets
+pets.pop()
+// MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+// Objects
+let MIT = {name: "MIT", address: "77 Mass Ave"}
+MIT.name
+MIT["name"]
+MIT.name = "MassTech"
+"name" in MIT
+MIT.fullAddress = {street: "77 Mass Ave", city: "Cambridge"}
+MIT
+MIT.fullAddress.city
+const MITClone = {...MIT} // shallow copy
+MITClone = {name: "Caltech"} // error
+MITClone.fullAddress.city = "Boston"
+MITClone
+Object.freeze(MITClone) //  shallow freeze
+MITClone.address = "84 Mass Ave" // error
+// MDN: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics
+
+// Logging
+console.log(MIT.name)
+alert(pets[0])
+
+// For Loops **discouraged should be using functionals like map and reduce
+for (let i = 0; i < pets.length; i++) {
+    console.log(pets[i]);
+}
+
+// Functions and Conditionals
+let add = (a, b) => {return a+b}
+let findMax = (a,b) => {if(a>b) return a; else return b;}
+// Student. Create isEqualNumber function. Student show work?
+let isEqualNumber = (a,b) => {if(a === b) return true; else return false;}
+// https://dorey.github.io/JavaScript-Equality-Table/
+
 
 /* Problem Setup:
  * 	Last few semesters at MIT and you want to only take highly the rated classes
