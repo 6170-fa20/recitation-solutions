@@ -115,7 +115,7 @@ words.reduce((acc, item) => { acc += ' ' + item; return acc; }, '' );
 // ------------------------------------------------ STEP 5
 
 // students do fiddle number 1
-// https://jsfiddle.net/drlewis/tnumgwkc/12/
+// https://jsfiddle.net/drlewis/tnumgwkc/13/
 
 // Given tasks and their durations, calculate the total time for all
 // tasks that took more than 2 hours to complete.
@@ -134,7 +134,7 @@ words.reduce((acc, item) => { acc += ' ' + item; return acc; }, '' );
 // ------------------------------------------------ STEP 6
 
 // students do fiddle number 2
-// https://jsfiddle.net/drlewis/95aty4mn/1/
+// https://jsfiddle.net/drlewis/95aty4mn/5/
 
 
 // EXTRA JS ARRAY YUMMIES
