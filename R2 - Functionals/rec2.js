@@ -100,7 +100,7 @@ words.map((item) => { return item + '!' } ); // return is not necessary
 
 // filter
 // list.filter( (item, idx) => {...})
-// filter : Array → Array (number of satisfying items)
+// filter : Array → Array (items that satisfy condition)
 
 // filter: return a list of all words with less than 6 characters
 words.filter((item) => { return item.length < 6 } );
