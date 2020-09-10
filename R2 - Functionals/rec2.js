@@ -1,11 +1,10 @@
 // Recitation 2
-// This file exists for the TA's to reference for recitation 2
 
 // Purpose of Recitation:
 // 	Showcase and give practice with functionals
 
 // Key Ideas
-//  Functionals, closures
+//  Functionals
 
 // ------------------------------------------------ STEP 1
 
@@ -29,10 +28,6 @@ function (a,b) { return a+b; }
 //  (2): arrow functions help to bind `this` in classes, the "normal" form doesn't
 
 // ------------------------------------------------ STEP 2
-
-// Start off with super solution
-// Show variant with arrow function
-// Then here's how you do it with iteration abstraction
 
 const schedule = [
     { name: "Machine Learning", number: "6.867", rating: 6.5 },
@@ -86,8 +81,6 @@ let arrowWithoutBody_GetCourseNamesWithRatingGreaterThan = (schedule, rating) =>
 //      - Can returns functions as results
 
 // ------------------------------------------------ STEP 4
-
-// show some examples 
 
 let words = ['6.170', 'recitation', 'is', 'great']; 
 
