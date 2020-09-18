@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<head>
+	<title>
+		Closure Counter
+	</title>
+</head>
+
+<body>
+	<div id="counters">
+
+		<!-- COUNTER 0 -->
+		<h1 id="counter-0">0</h1>
+		<button id="counter-0-increment">Increment</button>
+		<button id="counter-0-decrement">Decrement</button>
+		<button id="counter-0-reset">Reset</button>
+
+		<!-- COUNTER 1 -->
+		<h1 id="counter-1">0</h1>
+		<button id="counter-1-increment">Increment</button>
+		<button id="counter-1-decrement">Decrement</button>
+		<button id="counter-1-reset">Reset</button>
+
+	</div>
+</body>
+
+<script>
+	Counter = function () {
+		// UNSAFE
+		// tally = 0;
+		// return {
+		// 	value: () => tally,
+		// 	increment: () => { tally++ },
+		// 	decrement: () => { tally-- },
+		// 	reset: () => { tally = 0 },
+		// };
+
+		// SAFE
+		let tally = 0;
+
+		let out = {
+			value: () => tally,
+			increment: () => { tally++ },
+			decrement: () => { tally-- },
+			reset: () => { tally = 0 },
+		};
+
+		Object.freeze(out);
+		return out;
+	};
+
+	// CONST FOR SAFETY
+	const counters = [Counter(), Counter()];
+
+	// FREEZE FOR IMMUTABILITY
+	Object.freeze(counters);
+
+	const updateCountersOnPage = () => {
+		counters.forEach((_, cidx) => {
+			document.getElementById(`counter-${cidx}`).innerText = counters[cidx].value()
+		});
+	};
+
+	// initialize each counter on the page
+	counters.forEach((counter, cidx) => {
+		// fetch counter buttons from the DOM
+		const incrementButton = document.getElementById(`counter-${cidx}-increment`);
+		const decrementButton = document.getElementById(`counter-${cidx}-decrement`);
+		const resetButton = document.getElementById(`counter-${cidx}-reset`);
+		
+		// if we first register the click of buttons to call the counter's internals
+		// and THEN register the button clicks to reflect changes on the page, then when 
+		// the click event happens, the callbacks will be executed in the order they were registered
+		// See https://stackoverflow.com/questions/9512551/the-order-of-multiple-event-listeners
+
+		// register Counter functions on corresponding buttons using event listeners
+		incrementButton.addEventListener("click", counters[cidx].increment);
+		decrementButton.addEventListener("click", counters[cidx].decrement);
+		resetButton.addEventListener("click", counters[cidx].reset);
+
+		// force a counter value update on the page when there's a click
+		incrementButton.addEventListener("click", updateCountersOnPage);
+		decrementButton.addEventListener("click", updateCountersOnPage);
+		resetButton.addEventListener("click", updateCountersOnPage);
+
+		console.log(`Initialized counter ${cidx}`);
+	});
+</script>
+
+<!-- ATTACKS -->
+<script>
+	console.log("Running all attacks!");
+
+	// 1
+	tally = 9236478;
+	// fix by let tally
+
+	// 2
+	counters[0].reset = () => {alert("HAXED")}
+	// fix by freeze
+
+	// 3
+	counters[0] = null
+	// fix by freezing the counters array
+
+	// 4
+	counters = null
+	// fix by making the counters array const
+</script>
+
+</html>
