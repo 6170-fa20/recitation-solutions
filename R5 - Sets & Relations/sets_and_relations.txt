@@ -25,8 +25,7 @@ Relations
   requested: Group -> User
   rejected: Group -> User
 
-Operations examples
-Exercise with students (for the dot):  
+Operations examples 
 What is g.members?
   {(g)}.{(g,u1), (g, u2), ..., (g, u), (g1, uj)} => {(u1), (u2), (u3), ..., (ui)}
   NOTE that (uj) does not make it to the final result!
