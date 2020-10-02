@@ -1,0 +1,115 @@
+Building a group membership platform. How do we express the structure of this system
+and add constraints which match our expectations of how the system works? 
+Use sets, relations, and logic!
+
+Concept
+  Membership
+
+Purpose
+  Moderating membership requests
+
+Structure
+  Sets
+  User = Set of users = {(u1),(u2), ..., (un)}
+  Group = Set of user groups = {(g1), (g2), ..., (gn)}
+
+  - where each (ui) is an atom (primitive entity) representing a member of our collection
+  - size of User is the number of tuples in the set, length of tuple is arity
+  - size of User is n, arity is unary (tuple.length == 1)
+  - Everything is a relation, even these sets of atoms (unary relation)
+  - No duplicates because these are sets
+
+Relations
+  members: Group -> User = {(g1, u1), (g1, u2), (g2, u1), ...}
+  admin: Group -> User
+  requested: Group -> User
+  rejected: Group -> User
+
+Operations examples
+Exercise with students (for the dot):  
+What is g.members?
+  {(g)}.{(g,u1), (g, u2), ..., (g, u), (g1, uj)} => {(u1), (u2), (u3), ..., (ui)}
+  NOTE that (uj) does not make it to the final result!
+
+What is u.members
+  {(u)}.{(g,u1), (g, u2), ..., (g, u), (g1, uj)} => {}
+  NOTE that u is not in the domain of members
+
+What is u.~members
+  {(u)}.{(u1, g), (u2, g), ..., (u, g), (uj, g1)} => {(g)}
+  NOTE that u IS now in the domain of members
+
+What is members.u
+  {(g,u1), (g, u2), ..., (g, u), (g1, uj)}.{(u)} => {(g)}
+  This gives all the groups that user u is a part of
+
+What if we want to find the groups that u1 and u2 are both part of?
+  u1.~members & u2.~members
+  members.u1 & members.u2
+
+Actions:
+  // admin a can create a group g
+  create(a: User) returns new g: Group
+    let g = new group // thru some magical process
+    Group += g
+    g.admin = g
+    g.members += a
+
+  // user u requests to join group g
+  request (u: User, g: Group)
+    u not in g.members
+    g.requested += u
+
+  // admin a approves join of user u to group g
+  approve (a: User, u: User, g: Group)
+    u in g.requested
+    a = g.admin
+    g.requested -= u
+    g.members += u
+  
+  // admin a rejects user u joining group g
+  reject (a: User, u: User, g: Group)
+    u in g.requested
+    a = g.admin
+    g.requested -= u
+    g.rejected += u
+
+Operational Principle 
+  (seeing our actions come together 
+  to demonstrate the purpose / usefulness of the concept)
+  after g1 = create(u1);
+  observe g1 in Group 
+          and g1.admin = u1
+          and u1 in g1.members
+  
+  after request(u2, g1); approve(u1, u2, g1);
+  observe u2 in g1.members
+  
+  after request(u3, g1); reject(u1, u3, g1);
+  observe u3 not in g1.members 
+          and u3 in g1.rejected
+
+Constraints:
+
+- Groups have exactly one admin
+  all g: Group | one g.admin
+
+- The group's admin is also a member of the group
+  all g: Group | g.admin in g.members
+
+- Groups have at least one member
+  all g: Group | some g.members
+  all g: Group | #g.members >= 1
+
+- A user can only be in one of the following states with respect to a group member, requested, or rejected
+  all g: Group | no (g.members & g.requested)
+  all g: Group | no (g.members & g.rejected)
+  all g: Group | no (g.requested & g.rejected)
+
+Some impacts of the constraints
+- a group would need an admin in order to exist --> admin is necessarily creator of group
+- a user can only make one request, so if it gets rejected the user cannot request again
+- a user cannot be kicked out of the group
+- security: ultimate power to singular admin
+
+- security / implementation: need authentication and user access controls
