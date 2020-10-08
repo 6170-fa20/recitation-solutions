@@ -1,0 +1,103 @@
+<html>
+
+<head>
+  <title>URL Shortener</title>
+  <meta name="author" content="Barry McNamara">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/javascripts/services.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>URL Shortener</h1>
+  </header>
+
+  <main class="two-col">
+    <section id="operations-container">
+      <h2>Operations:</h2>
+      <div class="scrollbox">
+
+        <form id="add-one">
+          <h3>Create Short URL</h3>
+          <div>
+            <label for="name">Short Name:</label>
+            <input id="name" name="name">
+          </div>
+          <div>
+            <label for="url">URL:</label>
+            <input id="url" name="url">
+          </div>
+          <input type="submit" value="Shorten URL">
+        </form>
+
+
+        <form id="list-all">
+          <h3>List All Short URLs</h3>
+          <input type="submit" value="List Short URLs">
+        </form>
+
+
+        <form id="update-one">
+          <h3>Update Short URL</h3>
+          <div>
+            <label for="name">Short Name:</label>
+            <input id="name" name="name">
+          </div>
+          <div>
+            <label for="url">New URL:</label>
+            <input id="url" name="url">
+          </div>
+          <input type="submit" value="Update Short URL">
+        </form>
+
+        <form id="delete-one">
+          <h3>Delete Short URL</h3>
+          <div>
+            <label for="name">Short Name:</label>
+            <input id="name" name="name">
+          </div>
+          <input type="submit" value="Delete Short URL">
+        </form>
+
+        <form id="show-all-users">
+          <h3>List All Users</h3>
+          <input type="submit" value="List All Users">
+        </form>
+
+        <form id="sign-in">
+          <h3>Sign In</h3>
+          <div>
+            <label for="username">Username:</label>
+            <input id="username" name="username">
+          </div>
+          <input type="submit" value="Sign In">
+        </form>
+
+        <form id="sign-out">
+          <h3>Sign Out</h3>
+          <input type="submit" value="Sign Out">
+        </form>
+
+        <form id="sign-up">
+          <h3>Sign Up</h3>
+          <div>
+            <label for="username">Username:</label>
+            <input id="username" name="username">
+          </div>
+          <input type="submit" value="Sign Up">
+        </form>
+
+      </div>
+    </section>
+    <section>
+      <h2>Response:</h2>
+      <div class="scrollbox">
+        <pre id="response" class="teletype"></pre>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
