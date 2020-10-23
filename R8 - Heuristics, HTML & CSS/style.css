@@ -1,0 +1,73 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  --main-color: blue;
+}
+
+a:visited {
+  color: var(--main-color);
+}
+
+.header {
+  color: var(--main-color);
+  text-align: center;
+}
+
+.primary-header {
+  font-size: 4em;
+  margin-bottom: 4%;
+}
+
+.secondary-header {
+  font-size: 3em;
+  text-decoration: underline;
+  margin-bottom: 1%;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
+.subcontainer {
+  width: 50%;
+  margin: 5%;
+  overflow-wrap: break-word;
+}
+
+.short-form-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.short-form-container form input {
+  font-size: 1.2em;
+  margin: 2%;
+}
+
+#createFreet {
+  background-color: skyblue;
+  border-radius: 10px;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 2%;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.shorts-container {
+  height: 500px;
+  overflow: auto;
+  padding-right: 40px;
+}
+
+.short-container {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 30px 0px;
+  padding-left: 3%;
+}
+
+.short-name {
+  font-size: 2em;
+}
