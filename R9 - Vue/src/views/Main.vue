@@ -1,0 +1,29 @@
+<template>
+  <div>
+    <Navbar/>
+    <div class='main'>
+      <CreateShortForm/>
+      <ShortList/>
+    </div>
+  </div>
+</template>
+
+<script>
+import CreateShortForm from "../components/CreateShortForm.vue";
+import ShortList from "../components/ShortList.vue";
+import Navbar from "../components/Navbar.vue";
+
+export default {
+  name: "main",
+  data() {
+    return {
+      userName: this.$cookie.get('url-shortener-auth')
+    }
+  },
+  components: {
+    CreateShortForm,
+    ShortList,
+    Navbar
+  }
+};
+</script>
