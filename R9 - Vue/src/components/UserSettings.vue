@@ -7,7 +7,7 @@
       <SignIn/>
       <SignUp/>
     </div>
-    <div v-if='messages.length' class="success-message">
+    <div v-if='messages.length' class="success-message" style="text-align:center;">
       <div v-for='message in messages' v-bind:key='message.id'>{{ message }}</div>
     </div>
   </div>
@@ -64,7 +64,7 @@ export default {
     clearMessages: function() {
       setInterval(() => {
         this.messages = [];
-      }, 8000);
+      }, 5000);
     }
   }
 };

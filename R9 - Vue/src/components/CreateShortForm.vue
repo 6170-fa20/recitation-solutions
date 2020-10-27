@@ -87,7 +87,7 @@ export default {
       setInterval(() => {
         this.errors = [];
         this.success = "";
-      }, 8000);
+      }, 5000);
     }
   }
 };

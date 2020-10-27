@@ -93,7 +93,7 @@ export default {
       setInterval(() => {
         this.success = "";
         this.error = "";
-      }, 8000);
+      }, 5000);
     }
   }
 };

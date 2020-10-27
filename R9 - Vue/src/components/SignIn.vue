@@ -54,7 +54,7 @@ export default {
     clearMessages: function() {
       setInterval(() => {
         this.errors = [];
-      }, 8000);
+      }, 5000);
     }
   }
 }
