@@ -61,16 +61,6 @@ export default {
 </script>
 
 <style scoped>
-.form-group {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-label {
-  margin-right: 0.5rem;
-}
-
 form {
   width: fit-content;
 }

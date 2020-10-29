@@ -15,11 +15,6 @@ import Navbar from "../components/Navbar.vue";
 
 export default {
   name: "main",
-  data() {
-    return {
-      userName: this.$cookie.get('url-shortener-auth')
-    }
-  },
   components: {
     CreateShortForm,
     ShortList,

@@ -98,14 +98,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.short-list {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.short-list > * {
-  margin: 0.5rem;
-}
-</style>
