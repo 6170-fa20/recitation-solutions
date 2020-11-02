@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form id="sign-up" class='component' v-on:submit.prevent="signIn" method="post">
+    <form id="sign-up" class='component' v-on:submit.prevent="signUp" method="post">
       <input id='username' v-model.trim='username' type='text' name='username' placeholder="User's name">
       <input type='submit' value='Sign Up' class="button">
     </form>
@@ -28,7 +28,7 @@ export default {
   },
 
   methods: {
-    signIn: function() {
+    signUp: function() {
       const bodyContent = { username: this.username };
         axios
           .post("/api/users/", bodyContent)

@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "main",
+  name: "NavBar",
   data() {
     return {
       userName: this.$cookie.get('url-shortener-auth')

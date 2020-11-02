@@ -14,7 +14,7 @@ import ShortList from "../components/ShortList.vue";
 import Navbar from "../components/Navbar.vue";
 
 export default {
-  name: "main",
+  name: "Main",
   components: {
     CreateShortForm,
     ShortList,

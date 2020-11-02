@@ -41,21 +41,21 @@ export default {
       this.isSignedIn = true;
     }
 
-    eventBus.$on("signin-success", (userName) => {
+    eventBus.$once("signin-success", (userName) => {
       this.$cookie.set('url-shortener-auth', userName);
       this.isSignedIn = true;
       this.messages.push("You have been signed in!");
       this.clearMessages();
     });
     
-    eventBus.$on("signout-success", () => {
+    eventBus.$once("signout-success", () => {
       this.$cookie.set('url-shortener-auth', '');
       this.isSignedIn = false;
       this.messages.push("You have been signed out!");
       this.clearMessages();
     });
 
-    eventBus.$on("signup-success", () => {
+    eventBus.$once("signup-success", () => {
       this.messages.push("You have been signed up! Sign in to continue.");
       this.clearMessages();
     });

@@ -8,7 +8,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'main',
+      name: 'Main',
       component: () => import('./views/Main.vue')
     },
     {
