@@ -47,11 +47,11 @@ export default {
   },
 
   created: function() {
-    eventBus.$once("create-short-success", res => {
+    eventBus.$on("create-short-success", res => {
       this.shorts.push(res.data);
     });
 
-    eventBus.$once("update-short-success", res => {
+    eventBus.$on("update-short-success", res => {
       this.success = `Short name ${res.data.shortName} now resolves to ${
         res.data.url
       }`;
@@ -59,19 +59,19 @@ export default {
       this.loadShorts();
     });
 
-    eventBus.$once("delete-short-success", res => {
+    eventBus.$on("delete-short-success", res => {
       this.success = `Short name ${res.shortName} has been deleted`;
       this.clearMessages();
       this.loadShorts();
     });
 
-    eventBus.$once("update-short-error", res => {
+    eventBus.$on("update-short-error", res => {
       this.error = `Error updating short ${res.data.shortName}`;
       this.clearMessages();
       this.loadShorts();
     });
 
-    eventBus.$once("delete-short-error", res => {
+    eventBus.$on("delete-short-error", res => {
       this.error = `Error deleting short ${res.shortName}`;
       this.clearMessages();
       this.loadShorts();
